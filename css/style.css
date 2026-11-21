@@ -369,16 +369,10 @@ a {
   min-height: 230px;
 }
 
-.number {
-  font-size: .78rem;
-  color: var(--blue);
-  font-weight: 800;
-}
-
 .feature-card h3,
 .project-card h3 {
   font-size: 1.6rem;
-  margin: 35px 0 10px;
+  margin: 15px 0 10px;
   letter-spacing: -.03em;
 }
 
