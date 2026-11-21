@@ -31,7 +31,10 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--bg);
+  background-image: var(--gradient);
+  background-attachment: fixed;
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
@@ -69,7 +72,7 @@ a {
   z-index: 20;
   border-bottom: 1px solid transparent;
   transition: .3s;
-  background: rgba(6, 16, 29, .72);
+  background: rgba(0, 34, 48, .72);
   backdrop-filter: blur(16px);
 }
 
@@ -85,7 +88,7 @@ a {
 }
 
 .logo {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -.06em;
 }
@@ -102,17 +105,69 @@ a {
   color: var(--muted);
 }
 
-.nav a:hover,
-.nav a:focus {
+/* --- Liens avec soulignement animé (hors bouton Contact) --- */
+
+.nav a:not(.nav-cta) {
+  position: relative;
+  padding: 6px 0;
+  transition: color .25s;
+}
+
+/* Ligne : invisible par défaut, centrée */
+.nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .3s ease;
+}
+
+/* Survol / focus clavier : la ligne part du centre vers les côtés */
+.nav a:not(.nav-cta):hover,
+.nav a:not(.nav-cta):focus-visible {
   color: var(--text);
 }
+
+.nav a:not(.nav-cta):hover::after,
+.nav a:not(.nav-cta):focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Lien actif : blanc + ligne toujours visible */
+.nav a.active:not(.nav-cta) {
+  color: #fff;
+}
+
+.nav a.active:not(.nav-cta)::after {
+  transform: scaleX(1);
+}
+
+/* --- Bouton Contact --- */
 
 .nav-cta {
   padding: 8px 14px;
   border: 1px solid var(--strong);
   border-radius: 999px;
   color: var(--text) !important;
+  transition: background .25s, border-color .25s;
 }
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  background: rgba(255, 255, 255, .06);
+}
+
+.nav-cta.active {
+  background: rgba(255, 255, 255, .1);
+  border-color: #fff;
+}
+
+/* --- Menu mobile --- */
 
 .menu-toggle {
   border: 0;
@@ -131,10 +186,16 @@ a {
   padding: 18px;
   flex-direction: column;
   align-items: stretch;
-  background: rgba(9, 24, 42, .98);
+  background: rgba(0, 40, 58, .98);
   border: 1px solid var(--line);
   border-radius: 16px;
 }
+
+/* La ligne ne couvre que le texte en mobile */
+.nav.open a:not(.nav-cta) {
+  align-self: flex-start;
+}
+
 
 
 /* ==========================================================================
@@ -194,7 +255,7 @@ a {
   height: 320px;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: .12;
+  opacity: .18;
   pointer-events: none;
 }
 
@@ -220,7 +281,7 @@ a {
   align-items: center;
   justify-content: center;
   background: var(--blue);
-  color: #03101d;
+  color: #002230;
   padding: 12px 19px;
   border-radius: 12px;
   font-weight: 750;
@@ -229,7 +290,7 @@ a {
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(74, 167, 255, .2);
+  box-shadow: 0 10px 30px rgba(47, 181, 230, .28);
 }
 
 .text-link {
@@ -253,9 +314,9 @@ a {
 }
 
 .section-soft {
-  background: linear-gradient(180deg, rgba(9, 24, 42, .45), rgba(9, 24, 42, .18));
-  border-top: 1px solid rgba(130, 190, 240, .06);
-  border-bottom: 1px solid rgba(130, 190, 240, .06);
+  background: linear-gradient(180deg, rgba(0, 34, 48, .45), rgba(0, 34, 48, .18));
+  border-top: 1px solid rgba(120, 210, 240, .08);
+  border-bottom: 1px solid rgba(120, 210, 240, .08);
 }
 
 .section-heading {
@@ -290,7 +351,7 @@ a {
 .project-card,
 .contact-box {
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, rgba(12, 29, 49, .9), rgba(8, 20, 35, .85));
+  background: linear-gradient(145deg, rgba(0, 70, 100, .55), rgba(0, 34, 48, .75));
   border-radius: var(--radius);
   padding: 28px;
 }
@@ -354,7 +415,7 @@ a {
   padding: 8px 13px;
   border-radius: 999px;
   color: var(--muted);
-  background: rgba(12, 29, 49, .45);
+  background: rgba(0, 34, 48, .45);
 }
 
 .contact-box {
