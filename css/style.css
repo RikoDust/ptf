@@ -394,6 +394,12 @@ a {
   font-weight: 700;
 }
 
+.section-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .tag {
   font-size: .75rem;
   color: var(--blue);
