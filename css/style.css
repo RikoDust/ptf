@@ -281,7 +281,7 @@ a {
   align-items: center;
   justify-content: center;
   background: var(--blue);
-  color: #002230;
+  color: var(--text)  ;
   padding: 12px 19px;
   border-radius: 12px;
   font-weight: 750;
@@ -291,6 +291,15 @@ a {
 .button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(47, 181, 230, .28);
+}
+
+.button-light {
+  background: #fff;
+  color: var(--blue);
+}
+
+.button-light:hover {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, .18);
 }
 
 .text-link {
@@ -619,6 +628,12 @@ footer {
     align-items: start;
     gap: 80px;
   }
+
+
+
+
+
+
 
 }
 
