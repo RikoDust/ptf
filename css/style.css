@@ -4,8 +4,6 @@
 
 :root {
   --bg: #06101d;
-  --soft: #09182a;
-  --surface: #0c1d31;
   --line: rgba(130, 190, 240, .16);
   --strong: rgba(130, 190, 240, .3);
   --text: #edf6ff;
@@ -197,7 +195,6 @@ a {
 }
 
 
-
 /* ==========================================================================
    Hero
    ========================================================================== */
@@ -247,6 +244,7 @@ a {
   gap: 22px;
   align-items: center;
   margin-top: 24px;
+  margin-left: 12px;
 }
 
 .hero-glow {
@@ -280,10 +278,11 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--blue);
-  color: var(--text)  ;
-  padding: 12px 19px;
-  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(0, 70, 100, .55), rgba(0, 34, 48, .75));
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 12px 24px;
+  border-radius: 999px;
   font-weight: 750;
   transition: .25s;
 }
@@ -294,8 +293,8 @@ a {
 }
 
 .button-light {
-  background: #fff;
-  color: var(--blue);
+  color: #fff;
+  border-color: #fff;
 }
 
 .button-light:hover {
@@ -343,6 +342,17 @@ a {
 .section p {
   color: var(--muted);
   font-size: 1.02rem;
+}
+
+/* Sections Contact + Réseaux : rapprochées l'une de l'autre.
+   (.section.xxx = spécificité plus forte, pour ne pas être écrasé
+   par le padding desktop de .section plus bas) */
+.section.contact-section--first {
+  padding-bottom: 24px;
+}
+
+.section.contact-section--second {
+  padding-top: 24px;
 }
 
 
@@ -484,6 +494,54 @@ a {
 
 
 /* ==========================================================================
+   Réseaux sociaux
+   ========================================================================== */
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-weight: 650;
+  text-align: center;
+  max-width: 130px;
+  transition: .25s;
+}
+
+.social-item i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  font-size: 1.6rem;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(0, 70, 100, .55), rgba(0, 34, 48, .75));
+  transition: .25s;
+}
+
+.social-item:hover {
+  transform: translateY(-2px);
+}
+
+.social-item:hover i {
+  box-shadow: 0 10px 30px rgba(47, 181, 230, .28);
+}
+
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -511,7 +569,7 @@ footer {
 }
 
 .footer-info strong {
-  color: var(--text, inherit);
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -524,7 +582,7 @@ footer {
 
 .footer-info a:hover,
 .footer-bottom a:hover {
-  color: var(--text, currentColor);
+  color: var(--text);
   text-decoration: underline;
 }
 
@@ -543,7 +601,7 @@ footer {
 }
 
 .footer-social a:hover {
-  color: var(--text, currentColor);
+  color: var(--text);
   transform: translateY(-2px);
 }
 
@@ -556,11 +614,6 @@ footer {
 .footer-bottom p {
   margin: 0 0 8px;
 }
-
-.footer-bottom p a:hover {
-   color: var(--text);
-}
-
 
 .footer-bottom p:last-child {
   margin-bottom: 0;
@@ -610,10 +663,7 @@ footer {
     display: flex;
   }
 
-  .two-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  .two-grid,
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -628,12 +678,6 @@ footer {
     align-items: start;
     gap: 80px;
   }
-
-
-
-
-
-
 
 }
 
